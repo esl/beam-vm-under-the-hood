@@ -3,7 +3,7 @@
 %%% @doc Create a long running process which consumes CPU periodically
 %%% @end
 %%%-------------------------------------------------------------------
--module(problem_cpu).
+-module(cpu).
 
 %% API
 -export([start/0]).

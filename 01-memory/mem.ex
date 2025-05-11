@@ -3,7 +3,7 @@
 # @doc Create a long running process which consumes 1 GB of memory
 # @end
 #-------------------------------------------------------------------
-defmodule ProblemMem do
+defmodule Mem do
   @moduledoc """
   Creates a long-running process that consumes approximately 1 GB of memory.
   """

@@ -3,7 +3,7 @@
 %%% @doc Create a long running process which consumes 1 GB of memory
 %%% @end
 %%%-------------------------------------------------------------------
--module(problem_mem).
+-module(mem).
 
 %% API
 -export([start/0]).

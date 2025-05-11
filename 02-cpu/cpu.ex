@@ -3,7 +3,7 @@
 # @doc Create a long running process which consumes CPU periodically
 # @end
 #-------------------------------------------------------------------
-defmodule ProblemCpu do
+defmodule Cpu do
   @doc """
   Create a long running process which consumes CPU periodically. Run start() a few times to create
   more processes with different sleep times.
