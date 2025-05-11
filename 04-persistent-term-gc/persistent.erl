@@ -12,10 +12,8 @@
 
 create_value() -> lists:duplicate(100, erlang:monotonic_time()).
 
-% trace_print({trace, Pid, gc_minor_end, _Args}) ->
-%     io:format("Minor garbage collection finished ~p~n", [Pid]);
-trace_print({trace, Pid, gc_major_end, _Args}) ->
-    io:format("MAJOR garbage collection finished ~p~n", [Pid]);
+trace_print({trace, Pid, gc_minor_end, _Args}) -> io:format("Minor garbage collection finished ~p~n", [Pid]);
+trace_print({trace, Pid, gc_major_end, _Args}) -> io:format("MAJOR garbage collection finished ~p~n", [Pid]);
 trace_print(_M) -> ok.
 
 start() ->
@@ -29,8 +27,7 @@ start() ->
     Started = [spawn(fun() ->
         io:format("Process ~p starting (and getting the value1)~n", [self()]),
         T1 = persistent_term:get(value1),
-        %% Sleep for 5 seconds with 50ms intervals, as GC does not kick in for sleepers.
-        lists:foreach(fun(_) -> timer:sleep(50) end, lists:seq(1, 100)),
+        timer:sleep(5_000),
         io:format("Process ~p terminating~n", [self()]),
         T1 % do something un-optimizable to keep the value alive
     end) || _ <- lists:seq(1, 5)],
@@ -42,8 +39,7 @@ start() ->
     persistent_term:put(value1, create_value()),
 
     io:format("Main process sleeping 5 s and waiting for all processes to be garbage collected...~n"),
-    %% Sleep for 5 seconds with 50ms intervals, as GC does not kick in for sleepers.
-    lists:foreach(fun(_) -> timer:sleep(50) end, lists:seq(1, 100)), % 5 seconds with 50ms intervals
+    timer:sleep(5_000),
 
     trace:session_destroy(Session),
     io:format("Done, tracing done too.~n").
