@@ -4,18 +4,9 @@
 # @end
 #-------------------------------------------------------------------
 defmodule Mem do
-  @moduledoc """
-  Creates a long-running process that consumes approximately 1 GB of memory.
-  """
+  @moduledoc "Creates a long-running process that consumes approximately 1 GB of memory."
 
-  @doc """
-  Starts the memory-consuming process.
-
-  ## Example
-      iex> pid = ProblemMem.start()
-      iex> Process.alive?(pid)
-      true
-  """
+  @doc "Starts the memory-consuming process."
   @spec start() :: pid
   def start do
     spawn(fn -> process_loop() end)
@@ -32,15 +23,11 @@ defmodule Mem do
       :infinity -> :ok
     end
 
-    # This line ensures `big_data_list` is referenced after the receive block,
-    # making it part of the process's state that needs to be kept.
-    _ = big_data_list
-    :ok
+    # 'Returning' the value ensures `big_data_list` is considered referenced and not garbage collected.
+    big_data_list
   end
 
-  @doc """
-  Creates a binary of `num_bytes` filled with zeros.
-  """
+  # Creates a binary of `num_bytes` filled with zeros.
   defp create_big_binary(num_bytes) when is_integer(num_bytes) and num_bytes >= 0 do
     <<0::size(num_bytes)-unit(8)>>
   end

@@ -1,3 +1,8 @@
+#-------------------------------------------------------------------
+# @copyright (C) 2025, Erlang Solutions Ltd.
+# @doc Create a client that sends random data to a server
+# @end
+#-------------------------------------------------------------------
 defmodule Client do
   require Logger
 

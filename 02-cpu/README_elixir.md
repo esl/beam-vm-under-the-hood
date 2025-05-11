@@ -6,9 +6,9 @@ The provided code (`cpu.ex`) will spawn one or more processes. These processes a
 
 ## Running the Code
 
-In your IEx session, start the process(es) by calling the `Cpu.start()` function:
-
-Call this function several times to simulate a busier system.
+1. In IEx compile the code with `c "cpu.ex"` and reload if necessary using `r Cpu`.
+2. In your IEx session, start the process(es) by calling the `Cpu.start()` function:
+3. Call this function several times to simulate a busier system.
 
 ## Investigation Steps
 

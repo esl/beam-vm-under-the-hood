@@ -8,13 +8,15 @@ You are given a module (`mem.ex`) designed to simulate a process that allocates 
 
 ## Part 1: Running the Code and Initial Observation
 
+1. In IEx compile the code with `c "mem.ex"` and reload if necessary using `r Mem`.
+
 1. Start the process: `{:ok, pid} = Mem.start()` (if `start/0` returns `{:ok, pid}`) or `pid = Mem.start()` (if it returns `pid`). Check the function signature.
 
-2. Verify if the process is alive: `Process.alive?(pid)`
+1. Verify if the process is alive: `Process.alive?(pid)`
    What do you observe? Does the process crash or stay alive as expected?
    Does it seem to consume a large amount of memory immediately?
 
-3. **A Potential Pitfall - Compiler Optimizations:**
+1. **A Potential Pitfall - Compiler Optimizations:**
    Similar to Erlang, the Elixir compiler can optimize code. The `receive do after :infinity -> :ok end` block might be subject to optimizations.
 
    - Examine the `process_loop/0` function in `mem.ex`.
