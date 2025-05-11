@@ -12,7 +12,7 @@ defmodule Cpu do
   @spec start() :: pid()
   def start() do
     # Create a process which sleeps a random (fixed for this process) amount of time
-    spawn(fn -> process_loop(random:uniform(100) + 50) end)
+    spawn(fn -> process_loop(:rand.uniform(100) + 50) end)
   end
 
   defp process_loop(t) do
