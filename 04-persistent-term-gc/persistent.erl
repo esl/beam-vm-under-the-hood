@@ -23,7 +23,7 @@ start() ->
     Session = trace:session_create(persistent, Tracer, []),
     trace:process(Session, new, true, [garbage_collection]),
 
-    %% Spawn 5 processes which also have accessed the term by key and now "have seen it".
+    %% Spawn processes which also have accessed the term by key and now "have seen it".
     Started = [spawn(fun() ->
         io:format("Process ~p starting (and getting the value1)~n", [self()]),
         T1 = persistent_term:get(value1),
@@ -31,7 +31,7 @@ start() ->
         io:format("Process ~p terminating~n", [self()]),
         T1 % do something un-optimizable to keep the value alive
     end) || _ <- lists:seq(1, 5)],
-    io:format("Spawned 10 processes which all have seen the value1: ~0p~n", [Started]),
+    io:format("Spawned processes which all have seen the value1: ~0p~n", [Started]),
     timer:sleep(1_000), % Give processes time to schedule in and see the value
 
     %% Modify the term and wait for the processes to be garbage collected.

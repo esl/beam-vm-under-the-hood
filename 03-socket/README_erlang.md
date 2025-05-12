@@ -18,7 +18,6 @@ You'll need two separate terminal/shell windows: one for the server and one for 
 - **Start the Server (in Terminal 1):**
   Open an Erlang shell and start the server:
   ```erlang
-  $ erl
   1> c(server).
   2> server:start().
   % You should see a log message indicating the server has started.
@@ -26,7 +25,6 @@ You'll need two separate terminal/shell windows: one for the server and one for 
 - **Start the Client (in Terminal 2):**
   Open another Erlang shell and start the clients:
   ```erlang
-  $ erl
   1> c(client).
   2> client:start().
   % This will spawn multiple client processes.

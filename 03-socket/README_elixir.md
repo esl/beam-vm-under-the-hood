@@ -18,17 +18,14 @@ You'll need two separate terminal/shell windows: one for the server and one for 
 - **Start the Server (in Terminal 1):**
   Open an IEx session and start the server:
   ```elixir
-  $ iex
-  iex> c("server.ex") # Compile if not already done or if changed
-  iex> c("client.ex") # Compile if not already done or if changed
+  iex> c "server.ex" # Compile if not already done or if changed, reload with `r Server`
   iex> Server.start()
   # You should see a log message indicating the server has started.
   ```
 - **Start the Client (in Terminal 2):**
   Open another IEx session and start the clients:
   ```elixir
-  $ iex
-  iex> c("client.ex") # Ensure client module is compiled/loaded
+  iex> c "client.ex" # Ensure client module is compiled/loaded, reload with `r Client`
   iex> Client.start()
   # This will spawn multiple client processes.
   ```
